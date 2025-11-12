@@ -1,3 +1,4 @@
+import Counter from "./components/Counter";
 import Logo from "./components/Logo";
 import Navigation from "./components/Navigation";
 
