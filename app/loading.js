@@ -1,7 +1,7 @@
 function loading() {
     return (
         <p>
-            Loading Data .....            
+            Loading Data ...           
         </p>
     )
 }
