@@ -1,6 +1,6 @@
-import Counter from "./components/Counter";
-import Logo from "./components/Logo";
-import Navigation from "./components/Navigation";
+import Logo from "./_components/Logo";
+import Navigation from "./_components/Navigation";
+import '@/app/_styles/globals.css';
 
 export const metadata = {
   title: "The Wild Oasis",
@@ -8,13 +8,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className="bg-primary-950 text-primary-100 min-h-screen">
         <header>
           <Logo />
           <Navigation />
         </header>
         <main>{children}</main>
-        <footer>© 2026 The Wild Oasis, All Copyright is Keep up Policy Inc.</footer>
+        <footer>
+          © 2026 The Wild Oasis, All Copyright is Keep up Policy Inc.
+        </footer>
       </body>
     </html>
   );
