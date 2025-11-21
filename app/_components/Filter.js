@@ -5,12 +5,12 @@ function Filter() {
         All cabins
       </button>
       <button className="p-5 border-r border-primary-800 hover:bg-primary-700 w-full">
-        Small (1-3)
+        1-3 guests
       </button>
       <button className="p-5 border-r border-primary-800 hover:bg-primary-700 w-full">
-        Medium (4-7)
+        4-7 guests
       </button>
-      <button className="p-5 hover:bg-primary-900 w-full">Large (8+)</button>
+      <button className="p-5 hover:bg-primary-900 w-full">8+ guests</button>
     </div>
   );
 }
