@@ -13,7 +13,7 @@ const navLinks = [
   {
     name: "Home",
     href: "/account",
-    icon: <HomeIcon className="h-5 w-5 text-primary-600" />,
+    icon: <HomeIcon className="h-5 w-5 text-primary-600" />,dsffv
   },
   {
     name: "Reservations",
