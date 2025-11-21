@@ -1,6 +1,7 @@
 import CabinList from "../_components/CabinList";
 import { Suspense } from "react";
 import Spinner from "../_components/Spinner";
+import Filter from "../_components/filter";
 
 export const revalidate = 3600;
 // export const revalidate = 30;
@@ -25,7 +26,7 @@ export default function Page({ searchParams }) {
         home away from home. The perfect spot for a peaceful, calm vacation.
         Welcome to paradise.
       </p>
-
+      <Filter />
       <Suspense fallback={<Spinner />}>
         <CabinList filter={filter} />
       </Suspense>
