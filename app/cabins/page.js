@@ -12,7 +12,7 @@ export const metadata = {
 
 export default function Page({ searchParams }) {
   const filter = searchParams?.capacity ?? "all";
-
+console.log(filter)
   return (
     <div>
       <h1 className="text-4xl mb-5 text-accent-400 font-medium">
@@ -26,8 +26,10 @@ export default function Page({ searchParams }) {
         home away from home. The perfect spot for a peaceful, calm vacation.
         Welcome to paradise.
       </p>
-      <Filter />
-      <Suspense fallback={<Spinner />}>
+      <div className="flex mb-8 justify-end">
+        <Filter />
+      </div>
+      <Suspense key={filter} fallback={<Spinner />}>
         <CabinList filter={filter} />
       </Suspense>
     </div>
