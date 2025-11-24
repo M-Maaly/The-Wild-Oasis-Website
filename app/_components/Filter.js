@@ -5,6 +5,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 function Filter() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  console.log(searchParams)
   const pathname = usePathname();
 
   const activeFilter = searchParams.get("capacity") ?? "all";
