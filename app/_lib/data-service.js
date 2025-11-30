@@ -44,12 +44,12 @@ export const getCabins = async function () {
 
     // For testing
   // await new Promise((res) => setTimeout(res, 3000));
-
+  
   if (error) {
     console.error(error);
     throw new Error('Cabins could not be loaded');
   }
-
+  
   return data;
 };
 
@@ -71,7 +71,7 @@ export async function getBooking(id) {
     .select('*')
     .eq('id', id)
     .single();
-
+    
   if (error) {
     console.error(error);
     throw new Error('Booking could not get loaded');
@@ -94,7 +94,7 @@ export async function getBookings(guestId) {
     console.error(error);
     throw new Error('Bookings could not get loaded');
   }
-
+  
   return data;
 }
 
@@ -102,7 +102,8 @@ export async function getBookedDatesByCabinId(cabinId) {
   let today = new Date();
   today.setUTCHours(0, 0, 0, 0);
   today = today.toISOString();
-
+  
+  // await new Promise((res) => setTimeout(res, 3000));
 
   // Getting all bookings
   const { data, error } = await supabase
@@ -131,8 +132,6 @@ export async function getBookedDatesByCabinId(cabinId) {
 
 export async function getSettings() {
   const { data, error } = await supabase.from('settings').select('*').single();
-
-  // await new Promise((res) => setTimeout(res, 3000));
   
   if (error) {
     console.error(error);
