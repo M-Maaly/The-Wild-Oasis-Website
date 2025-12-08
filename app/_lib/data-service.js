@@ -192,14 +192,10 @@ export async function updateGuest(id, updatedFields) {
     .from('guests')
     .update(updatedFields)
     .eq('id', id)
-    .select()
-    .single();
 
   if (error) {
-    console.error(error);
     throw new Error('Guest could not be updated');
   }
-  return data;
 }
 
 export async function updateBooking(id, updatedFields) {
