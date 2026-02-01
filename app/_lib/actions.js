@@ -2,8 +2,8 @@
 
 import { revalidatePath } from "next/cache";
 import { auth, signIn, signOut } from "./auth";
-import { deleteBooking, getBookings, updateGuest } from "./data-service";
-import { th } from "date-fns/locale";
+import { deleteBooking, getBooking, getBookings, updateBooking, updateGuest } from "./data-service";
+
 
 export async function updateGuestAction(formData) {
   // console.log(formData)
@@ -23,6 +23,21 @@ export async function updateGuestAction(formData) {
   await updateGuest(guestId, updateData);
 
   revalidatePath("/account/profile");
+}
+
+export async function updateReservationAction(formData) {
+  const session = await auth();
+  if(!session) throw new Error("You must be logged in to edit a reservation");
+  
+  const guestId = session.user.guestId;
+  const booking = await getBooking(guestId)
+  const numGuests = parseInt(formData.get("numGuests"));
+  const observations = formData.get("observations");
+
+  const updateData = {numGuests, observations}
+  await updateBooking(booking.id, updateData)
+  revalidatePath("/account/reservations");
+
 }
 
 export async function deleteReservation(bookingId) {
