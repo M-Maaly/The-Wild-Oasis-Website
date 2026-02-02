@@ -2,8 +2,15 @@
 
 import { revalidatePath } from "next/cache";
 import { auth, signIn, signOut } from "./auth";
-import { deleteBooking, getBooking, getBookings, updateBooking, updateGuest } from "./data-service";
-
+import {
+  deleteBooking,
+  getBooking,
+  getBookings,
+  updateBooking,
+  updateGuest,
+} from "./data-service";
+import Reservation from "../_components/Reservation";
+import { redirect } from "next/navigation";
 
 export async function updateGuestAction(formData) {
   // console.log(formData)
@@ -26,18 +33,26 @@ export async function updateGuestAction(formData) {
 }
 
 export async function updateReservationAction(formData) {
+  // 1) Authenticate user
   const session = await auth();
-  if(!session) throw new Error("You must be logged in to edit a reservation");
-  
-  const guestId = session.user.guestId;
-  const booking = await getBooking(guestId)
+  if (!session) throw new Error("You must be logged in to edit a reservation");
+  // 2) Get form data
+  const reservationId = formData.get("reservationId");
   const numGuests = parseInt(formData.get("numGuests"));
-  const observations = formData.get("observations");
+  const observations = formData.get("observations").slice(0, 1000);
+  // 3) Authorization - check if the reservation belongs to the logged in user
+  const guestId = session.user.guestId;
+  const booking = await getBooking(reservationId);
+  const { id, guestId: guestIdBookink } = booking;
 
-  const updateData = {numGuests, observations}
-  await updateBooking(booking.id, updateData)
-  revalidatePath("/account/reservations");
-
+  if (guestId !== guestIdBookink)
+    throw new Error("You are not allowed to edit this reservation");
+  // 4) Update reservation
+  const updateData = { numGuests, observations };
+  await updateBooking(id, updateData);
+  // 5) Revalidate path and redirect
+  revalidatePath(`/account/reservations/edit/${reservationId}`);
+  redirect("/account/reservations");
 }
 
 export async function deleteReservation(bookingId) {
