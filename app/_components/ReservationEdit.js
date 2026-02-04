@@ -2,6 +2,7 @@
 
 import { useFormStatus } from "react-dom";
 import SpinnerMini from "./SpinnerMini";
+import SubmitButton from "./SubmitButton";
 
 function ReservationEdit({ params, maxCapacity, updateReservationAction, numGuests, observations }) {
   function handleUpdateReservation(e) {
@@ -54,19 +55,11 @@ function ReservationEdit({ params, maxCapacity, updateReservationAction, numGues
         </div>
 
         <div className="flex justify-end items-center gap-6">
-          <Button />
+          <SubmitButton labelPending={"Updating..."} >Update reservation</SubmitButton>
         </div>
       </form>
     </div>
   );
 }
 
-function Button() {
-    const {pending} = useFormStatus()
-  return (
-    <button className="bg-accent-500 px-8 py-4 text-primary-800 font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300" disabled={pending}>
-      {pending ? <span className="mx-auto"><SpinnerMini/></span> : "Update reservation"}
-    </button>
-  );
-}
 export default ReservationEdit;

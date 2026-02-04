@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { auth, signIn, signOut } from "./auth";
 import {
+  createBooking,
   deleteBooking,
   getBooking,
   getBookings,
@@ -30,6 +31,35 @@ export async function updateGuestAction(formData) {
   await updateGuest(guestId, updateData);
 
   revalidatePath("/account/profile");
+}
+
+export async function createReservationAction(bookingData, formData) {
+  // 1) Authenticate user
+  const session = await auth();
+  if (!session)
+    throw new Error("You must be logged in to create a reservation");
+  // 2) Get form data
+  const numGuests = parseInt(formData.get("numGuests"));
+  const observations = formData.get("observations").slice(0, 1000);
+  const hasBreakfast = formData.get("hasBreakfast") === "on";
+
+  const newBooking = {
+    ...bookingData,
+    startDate: bookingData.startDate.toISOString(),
+    endDate: bookingData.endDate.toISOString(),
+    numGuests,
+    observations,
+    hasBreakfast,
+    guestId: session.user.guestId,
+    isPaid: false,
+    status: "unconfirmed",
+  };
+
+  // 3) Create reservation
+  await createBooking(newBooking);
+  // 4) Revalidate path and redirect
+  revalidatePath(`/cabins/${bookingData.cabinId}`);
+  redirect("cabins/thankyou");
 }
 
 export async function updateReservationAction(formData) {
