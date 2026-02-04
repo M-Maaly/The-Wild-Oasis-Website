@@ -10,7 +10,6 @@ import {
   updateBooking,
   updateGuest,
 } from "./data-service";
-import Reservation from "../_components/Reservation";
 import { redirect } from "next/navigation";
 
 export async function updateGuestAction(formData) {
@@ -59,7 +58,7 @@ export async function createReservationAction(bookingData, formData) {
   await createBooking(newBooking);
   // 4) Revalidate path and redirect
   revalidatePath(`/cabins/${bookingData.cabinId}`);
-  redirect("cabins/thankyou");
+  redirect("/cabins/thankyou");
 }
 
 export async function updateReservationAction(formData) {
