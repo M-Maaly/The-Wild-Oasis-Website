@@ -35,7 +35,6 @@ function DateSelector({ settings, bookedDates, cabin }) {
 
   // SETTINGS
   const { minBookingLength, maxBookingLength } = settings;
-  console.log(range);
 
   return (
     <div className="flex flex-col justify-between">
