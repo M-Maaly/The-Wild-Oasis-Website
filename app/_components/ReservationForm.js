@@ -39,7 +39,7 @@ function ReservationForm({ cabin, user }) {
   );
   return (
     <div className="scale-[1.01]">
-      <div className="bg-primary-800 text-primary-300 px-16 py-2 flex justify-between items-center">
+      <div className="bg-primary-800 text-primary-300 px-4 md:px-16 py-2 flex flex-wrap justify-between items-center gap-2">
         <p>Logged in as</p>
 
         <div className="flex gap-4 items-center">
@@ -63,14 +63,14 @@ function ReservationForm({ cabin, user }) {
           createReservationWithData(formData);
           resetRange();
         }}
-        className="bg-primary-900 py-10 px-16 text-lg flex gap-5 flex-col"
+        className="bg-primary-900 py-4 md:py-10 px-3 md:px-16 text-sm md:text-lg flex gap-3 md:gap-5 flex-col"
       >
         <div className="space-y-2">
           <label htmlFor="numGuests">How many guests?</label>
           <select
             name="numGuests"
             id="numGuests"
-            className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
+            className="px-3 py-2 md:px-5 md:py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm text-sm md:text-base"
             required
             value={numGuests}
             onChange={(e) => setNumGuests(parseInt(e.target.value))}
@@ -93,7 +93,7 @@ function ReservationForm({ cabin, user }) {
           <textarea
             name="observations"
             id="observations"
-            className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
+            className="px-3 py-2 md:px-5 md:py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm text-sm md:text-base"
             placeholder="Any pets, allergies, special requirements, etc.?"
           />
         </div>

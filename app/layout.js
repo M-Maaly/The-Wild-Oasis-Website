@@ -23,12 +23,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${josefinSans.className} bg-primary-950 text-primary-100 antialiased min-h-screen flex flex-col relative`}
+        className={`${josefinSans.className} bg-primary-950 text-primary-100 antialiased flex flex-col relative min-h-screen scrollbar-hide`}
       >
         <Header />
-        <div className="px-8 py-12 flex-1 grid">
+        <div className="px-4 py-6 md:px-8 md:py-12 flex-1 grid">
           <main className=" max-w-7xl mx-auto w-full">
-            <ReservationProvider>{children}</ReservationProvider>
+            <ReservationProvider>{children}</ReservationProvider >
           </main>
         </div>
       </body>

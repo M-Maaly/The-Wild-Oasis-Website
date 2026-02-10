@@ -6,8 +6,8 @@ export default async function Navigation() {
   console.log(session);
 
   return (
-    <nav className="z-10 text-xl">
-      <ul className="flex gap-16 items-center">
+    <nav className="z-10 text-xl hidden md:block">
+      <ul className="flex md:gap-8 lg:gap-16 items-center">
         <li>
           <Link
             href="/cabins"

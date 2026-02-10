@@ -54,4 +54,15 @@
 }
 
 
+/* Hide second month on mobile */
+@media (max-width: 767px) {
+  .rdp-month:nth-child(2) {
+    display: none;
+  }
+  
+  .rdp-months {
+    flex-direction: column;
+  }
+}
+
 

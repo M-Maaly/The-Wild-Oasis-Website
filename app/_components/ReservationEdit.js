@@ -12,14 +12,14 @@ function ReservationEdit({ params, maxCapacity, updateReservationAction, numGues
   }
   return (
     <div>
-      <h2 className="font-semibold text-2xl text-accent-400 mb-7">
+      <h2 className="font-semibold text-xl md:text-2xl text-accent-400 mb-5 md:mb-7">
         Edit Reservation #{params.reservationId}
       </h2>
 
       <form
         action={updateReservationAction}
         onSubmit={handleUpdateReservation}
-        className="bg-primary-900 py-8 px-12 text-lg flex gap-6 flex-col"
+        className="bg-primary-900 py-4 md:py-8 px-3 md:px-12 text-sm md:text-lg flex gap-3 md:gap-6 flex-col"
       >
         <input type="hidden" name="reservationId" value={params.reservationId} />
 
@@ -29,7 +29,7 @@ function ReservationEdit({ params, maxCapacity, updateReservationAction, numGues
             name="numGuests"
             id="numGuests"
             defaultValue={numGuests}
-            className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
+            className="px-3 py-2 md:px-5 md:py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm text-sm md:text-base"
             required
           >
             <option value="" key="">
@@ -50,7 +50,7 @@ function ReservationEdit({ params, maxCapacity, updateReservationAction, numGues
           <textarea
             name="observations"
             defaultValue={observations}
-            className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
+            className="px-3 py-2 md:px-5 md:py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm text-sm md:text-base"
           />
         </div>
 
