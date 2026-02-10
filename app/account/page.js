@@ -34,7 +34,7 @@ export default async function Page() {
       </h2>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 min-[380px]:grid-cols-3 gap-4 mb-8">
+      <div className="grid grid-cols-3 gap-4 mb-8">
         <StatCard 
           label="Total Bookings" 
           value={totalBookings} 
@@ -59,7 +59,7 @@ export default async function Page() {
             Next Adventure
           </div>
           
-          <div className="p-6 md:p-8 flex flex-col md:flex-row gap-6 items-center">
+          <div className="p-6 md:p-8 pt-8 flex flex-col md:flex-row gap-6 items-center">
             {/* Countdown Circle */}
             <div className="flex-shrink-0">
                <div className="rounded-full border-4 border-accent-500 h-24 w-24 flex flex-col items-center justify-center text-accent-500">
