@@ -34,7 +34,7 @@ function ReservationCard({ booking }) {
         />
       </div>
 
-      <div className="flex-grow px-4 md:px-6 py-3 flex flex-col">
+      <div className="flex-grow px-4 md:px-6 py-3 flex flex-col min-w-0">
         <div className="flex items-center justify-between flex-wrap gap-2">
           <h3 className="text-lg md:text-xl font-semibold">
             {numNights} nights in Cabin {name}
@@ -50,7 +50,7 @@ function ReservationCard({ booking }) {
           )}
         </div>
 
-        <p className="text-base md:text-lg text-primary-300">
+        <p className="text-sm md:text-lg text-primary-300">
           {format(new Date(startDate), "EEE, MMM dd yyyy")} (
           {isToday(new Date(startDate))
             ? "Today"

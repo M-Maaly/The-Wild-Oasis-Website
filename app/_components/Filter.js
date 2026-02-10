@@ -15,7 +15,7 @@ function Filter() {
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   }
   return (
-    <div className="border border-primary-800 flex flex-wrap">
+    <div className="border border-primary-800 flex overflow-x-auto scrollbar-hide whitespace-nowrap">
       <Button
         handleFilter={handleFilter}
         filter={"all"}

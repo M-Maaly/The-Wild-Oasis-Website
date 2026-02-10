@@ -34,7 +34,7 @@ export default async function Page() {
       </h2>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-3 md:grid-cols-3 gap-4 mb-8">
+      <div className="grid grid-cols-1 min-[380px]:grid-cols-3 gap-4 mb-8">
         <StatCard 
           label="Total Bookings" 
           value={totalBookings} 

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Bars3Icon, XMarkIcon, ArrowRightOnRectangleIcon } from "@heroicons/react/24/solid";
+import { Bars3Icon, XMarkIcon, ArrowRightOnRectangleIcon, CalendarDaysIcon, UserIcon, HomeIcon, HomeModernIcon, InformationCircleIcon } from "@heroicons/react/24/solid";
 import { signOutAction } from "../_lib/actions";
 
 export default function MobileNav({ session }) {
@@ -50,22 +50,48 @@ export default function MobileNav({ session }) {
         {/* Navigation Links */}
         <nav className="px-6 py-4 flex flex-col h-[calc(100%-80px)]">
           <ul className="flex flex-col gap-6 text-xl">
+            {session?.user && (
+              <>
+                <li>
+                  <Link
+                    href="/account/reservations"
+                    onClick={closeMenu}
+                    className="flex items-center gap-4 py-2 hover:text-accent-400 transition-colors"
+                  >
+                    <CalendarDaysIcon className="h-5 w-5 text-primary-600" />
+                    <span>Reservations</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/account/profile"
+                    onClick={closeMenu}
+                    className="flex items-center gap-4 py-2 hover:text-accent-400 transition-colors"
+                  >
+                    <UserIcon className="h-5 w-5 text-primary-600" />
+                    <span>Guest profile</span>
+                  </Link>
+                </li>
+              </>
+            )}
             <li>
               <Link
                 href="/cabins"
                 onClick={closeMenu}
-                className="block py-2 hover:text-accent-400 transition-colors"
+                className="flex items-center gap-4 py-2 hover:text-accent-400 transition-colors"
               >
-                Cabins
+                <HomeModernIcon className="h-5 w-5 text-primary-600" />
+                <span>Cabins</span>
               </Link>
             </li>
             <li>
               <Link
                 href="/about"
                 onClick={closeMenu}
-                className="block py-2 hover:text-accent-400 transition-colors"
+                className="flex items-center gap-4 py-2 hover:text-accent-400 transition-colors"
               >
-                About
+                <InformationCircleIcon className="h-5 w-5 text-primary-600" />
+                <span>About</span>
               </Link>
             </li>
             <li>
@@ -93,6 +119,7 @@ export default function MobileNav({ session }) {
                 </Link>
               )}
             </li>
+            
           </ul>
 
           {/* Sign Out Button - only show when logged in */}
