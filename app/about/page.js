@@ -13,7 +13,7 @@ export default async function Page() {
   const cabins = await getCabins();
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-x-24 md:gap-y-32 text-lg items-center">
+    <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-x-24 md:gap-y-32 text-lg items-center animate-fade-in">
       <div className="col-span-1 md:col-span-3">
         <h1 className="text-4xl mb-10 text-accent-400 font-medium">
           Welcome to The Wild Oasis
